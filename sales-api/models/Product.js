@@ -17,16 +17,11 @@ const ProductSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   price: {
-    type: String,
+    type: Number,
     required: true,
-    validate: {
-      validator: function (value) {
-        if (isNaN(value)) throw new Error('Path `price` must be a number')
-      }, 
-    },
     min: 0,
   },
   image: {

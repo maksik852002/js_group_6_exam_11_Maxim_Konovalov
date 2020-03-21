@@ -32,18 +32,18 @@ router.post("/sessions", async (req, res) => {
 });
 
 router.delete("/sessions", async (req, res) => {
-  const success = {message: 'Success'};
+  const success = { message: "Success" };
   try {
-    const token = req.get('Authorization').split(' ')[1];
+    const token = req.get("Authorization").split(" ")[1];
     if (!token) return res.send(success);
-    const user = await User.findOne({token});
+    const user = await User.findOne({ token });
     if (!user) return res.send(success);
 
     user.generateToken();
     await user.save();
-    return res.send(success)
+    return res.send(success);
   } catch (error) {
-    return res.send(success)
+    return res.send(success);
   }
 });
 

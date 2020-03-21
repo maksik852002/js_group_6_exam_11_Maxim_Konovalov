@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const config = require('./config');
+const config = require("./config");
 
 const products = require("./app/products");
 const categories = require("./app/categories");
@@ -20,7 +20,6 @@ const run = async () => {
   app.use("/products", products);
   app.use("/categories", categories);
   app.use("/users", users);
-
 
   app.listen(port, () => {
     console.log(`Server started on ${port} port!`);

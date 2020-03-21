@@ -11,10 +11,10 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: true,
       validate: {
-        validator: async function (value) {
-          if (!this.isModified('username')) return true;
-          const user = await User.findOne({username: value});
-          if (user) throw new Error('Path `username` is alredy registred');
+        validator: async function(value) {
+          if (!this.isModified("username")) return true;
+          const user = await User.findOne({ username: value });
+          if (user) throw new Error("Path `username` is alredy registred");
         }
       }
     },
@@ -22,12 +22,13 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
       validate: {
-        validator: function (value) {
-          if (!this.isModified('password')) return true;
-          if (value.length < 3 || value.length > 15 ) throw new Error('Path `password` must be 3-15 characters long');
+        validator: function(value) {
+          if (!this.isModified("password")) return true;
+          if (value.length < 3 || value.length > 15)
+            throw new Error("Path `password` must be 3-15 characters long");
         }
       }
-    },  
+    },
     name: {
       type: String,
       required: true
@@ -38,14 +39,15 @@ const UserSchema = new mongoose.Schema(
         validator: function(v) {
           return /\d{4}-\d{2}-\d{2}-\d{2}/.test(v);
         },
-        message: props => `${props.value} is not a valid phone number!`
+        message: props =>
+          `${props.value} is not a valid phone number. Valid number is DDDD-DD-DD-DD!`
       },
       required: true
     },
     token: {
       type: String,
       required: true
-    },
+    }
   },
   {
     versionKey: false
