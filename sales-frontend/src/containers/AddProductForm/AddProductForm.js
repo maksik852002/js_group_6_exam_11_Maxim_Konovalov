@@ -21,7 +21,7 @@ const AddProductForm = () => {
   return (
     <>
       <div className="border rounded mt-4 p-4">
-        <h2 className="mb-4">Add New Post</h2>
+        <h2 className="mb-4">Add New Product</h2>
         <PostForm
           onSubmit={data => dispatch(createProduct(data))}
           categories={categories}
